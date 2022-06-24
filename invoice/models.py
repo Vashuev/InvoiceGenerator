@@ -86,11 +86,11 @@ class InvoiceProduct(models.Model):
             customer, it links those products with corrosponding invoice
 
     """
-    invoiceId = models.ForeignKey(to=Invoice, on_delete=models.CASCADE)
-    productId = models.ForeignKey(to=Product, on_delete=models.DO_NOTHING)
+    invoiceId = models.ForeignKey(to=Invoice, related_name='products', on_delete=models.CASCADE)
+    productId = models.ForeignKey(to=Product, related_name='invoice',on_delete=models.DO_NOTHING)
     quantity = models.PositiveIntegerField()
 
     def __str__(self) -> str:
-        return self.invoice_id.number + self.product_id.name
+        return self.invoiceId.number + self.productId.name
     
 
