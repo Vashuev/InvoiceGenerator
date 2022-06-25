@@ -1,6 +1,3 @@
-from asyncio.windows_events import NULL
-from functools import partial
-from logging import NullHandler
 from rest_framework import serializers
 from .models import Product, Invoice, InvoiceProduct
 from django.db import transaction
