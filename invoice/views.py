@@ -1,4 +1,3 @@
-from re import A
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.views import APIView
