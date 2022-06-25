@@ -59,7 +59,8 @@ class Invoice(models.Model):
     # Customer related Fields
     customerName = models.CharField(max_length=50)
     phoneNumber = models.CharField(max_length=12)
-    
+    customerAddress = models.CharField(max_length=200, default='H-24, K Vihar, Janakpuri East, New Delhi, 110052')
+
     # utilities fields
     uniqueId = models.CharField(null=True, blank=True, max_length=100)
     slug = models.SlugField(max_length=500, unique=True, blank=True, null=True)

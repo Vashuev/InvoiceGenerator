@@ -36,7 +36,6 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         # validating products quantity 
-        print("data = ", data)
         if self.context['request'].method == 'POST':
             ValidatePhoneNumber(data.get('phoneNumber'))
             ValidateStockQuantityPost(data.get('products'))

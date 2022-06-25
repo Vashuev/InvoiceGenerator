@@ -1,0 +1,71 @@
+{% load custom_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+
+      .container {
+        padding-top: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      #row1 {
+        text-align: right;
+        font-size: 20px
+      }
+
+      #company {
+        font-size: 30px
+      }
+
+      #customer{
+        font-size: 17px;
+      }
+
+      #width40 {
+        width: 40%;
+        font-size: 17px;
+      }
+      #width20 {
+        width: 20%;
+        font-size: 17px;
+      }
+      #width15 {
+        width: 15%;
+        font-size: 17px;
+      }
+
+      #invoiceTable {
+        border: 1px solid black;
+        width: 100%;
+        text-align: left;
+      }
+
+      #last {
+        text-align: center;
+        font-size: 15px;
+      }
+      tr{
+        font-size: 20px;
+      }
+
+    </style>
+    {% block title %}
+
+    {% endblock %}
+  </head>
+  <body>
+    {% block content %}
+    
+    {% endblock %}
+  </body>
+</html>

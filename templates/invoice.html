@@ -1,0 +1,59 @@
+{% include 'base.html' %}
+
+{% block title %}
+    <title>{{number}}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div id="row1">
+        INVOICE: <b>{{number}}</b><br>
+        status : {{status}}
+        <div id="company">
+            <b>Virtual Company Ltd.</b>
+        </div>
+        <div id="company detail">
+            +91-XXXX-XX-XXX<br>
+            abc@company.com<br>
+            23th Street, Zbcxyz<br>
+        </div>
+    </div>
+
+    <div id="customer">
+        Customer Name : <b>{{customerName}}</b><br>
+        Phone : +91-{{phoneNumber}}<br>
+        Addr : {{customerAddress}}<br>
+    </div>
+
+    <table id="invoiceTable">
+        <tbody>
+            <tr>
+                <td id="width40"><b>Item/ Description</b></td>
+                <td id="width20"><b>Price per Unit (Rs.)</b></td>
+                <td id="width20"><b>Quantity</b></td>
+                <td id="width20"><b>Price (Rs.)</b></td>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td id="width40"><b>{{product|get_item:'name'}} : </b> {{product|get_item:'description'}}</td>
+                <td id="width20">{{product|get_item:'pricePerUnit'}}</td>
+                <td id="width20">{{product|get_item:'quantity'}}</td>
+                <td id="width20">{{product|get_item:'price'}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td id="width40"><b>Total</b></td>
+                <td id="width20"></td>
+                <td id="width20">{{total_quantity}}</td>
+                <td id="width20">Rs. {{total_price}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="last">
+        <p><i><u>Thankyou for shopping with us!</u></i></p>
+    </div>
+</div>
+
+{% endblock %}
