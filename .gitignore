@@ -128,4 +128,3 @@ dmypy.json
 .pyre/
 
 # Django related Files and Folders
-migrations/
