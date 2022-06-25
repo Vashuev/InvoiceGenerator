@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-from pickle import FALSE
 import environ
+import django_heroku
 
 # Initialise environment variables
 env = environ.Env()
@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', env('DJANGO_SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = FALSE
+DEBUG = False
 
-ALLOWED_HOSTS = ['https://deploy-weather-application.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['https://invoicegene.herokuapp.com/','localhost','127.0.0.1']
 
 
 # Application definition
@@ -53,8 +53,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -90,15 +90,21 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.getenv('SECRET_KEY', env('DATABASE_NAME')),
+    #     'USER' : os.getenv('SECRET_KEY', env('DATABASE_USER')),
+    #     'PASSWORD' : os.getenv('SECRET_KEY', env('DATABASE_PASSWORD')),
+    #     'HOST' : os.getenv('SECRET_KEY', env('DATABASE_HOST')),
+    #     "ATOMIC_MUTATIONS": True,
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('SECRET_KEY', env('DATABASE_NAME')),
-        'USER' : os.getenv('SECRET_KEY', env('DATABASE_USER')),
-        'PASSWORD' : os.getenv('SECRET_KEY', env('DATABASE_PASSWORD')),
-        'HOST' : os.getenv('SECRET_KEY', env('DATABASE_HOST')),
-        "ATOMIC_MUTATIONS": True,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 
 # Password validation
@@ -148,3 +154,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH=True
+
+django_heroku.settings(locals())
