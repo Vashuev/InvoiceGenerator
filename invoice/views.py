@@ -5,6 +5,15 @@ from rest_framework.response import Response
 from .serializers import (ProductSerializer,InvoiceSerializer)
 from .models import (Product, Invoice, InvoiceProduct)
 
+from rest_framework.permissions import AllowAny
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
+
+class UserCreateAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
+
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

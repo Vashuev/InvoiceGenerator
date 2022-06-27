@@ -7,4 +7,6 @@ urlpatterns = [
     path('invoice/', views.InvoiceAPIView.as_view(), name='invoice_create'),
     path('invoice/<slug:slug>/', views.InvoiceUpdateView.as_view(), name='invoice_update'),
     path('render_pdf_view/<slug:slug>/', views.render_pdf_view, name='invoice_pdf'),
+    
+    path('register/', views.UserCreateAPIView.as_view(), name='register'),
 ]
