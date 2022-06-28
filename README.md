@@ -2,7 +2,7 @@
 Product Invoice generator and Inventory check
 
 ### Database design
-![alt text](https://github.com/Vashuev/InvoiceGenerator/blob/main/assests/dbdiagram.png?raw=true)
+![alt text](https://github.com/Vashuev/InvoiceGenerator/blob/main/assests/dbdiagram.jpg?raw=true)
 
 **Table product** : Information about various products, like price, quantity in stock, description etc\
 **Table invoice** : Invoice with it's customer information\
